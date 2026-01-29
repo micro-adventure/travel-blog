@@ -1,47 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Backpack Diary</title>
-    <link rel="manifest" href="manifest.json">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #F9F7F2; color: #2D4739; }
-        h1, h2 { font-family: 'DM+Serif+Display', serif; }
-        .bento-card { background: white; border-radius: 1.5rem; transition: transform 0.2s; }
-        .bento-card:hover { transform: scale(1.02); }
-    </style>
-</head>
-<body class="p-4 md:p-8">
-    <header class="max-w-6xl mx-auto text-center mb-12">
-        <h1 class="text-5xl md:text-7xl mb-4">The Backpack Diary</h1>
-        <p class="text-lg opacity-80 italic">One bag. Endless borders.</p>
-    </header>
+<section class="max-w-6xl mx-auto mt-12 mb-24">
+    <button id="open-form" class="bg-[#2D4739] text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-opacity-90 transition">
+        + Post a New Story
+    </button>
 
-    <main class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="md:col-span-2 bento-card p-8 bg-emerald-50 border border-emerald-100 min-h-[300px] flex flex-col justify-center items-center">
-            <h2 class="text-2xl mb-4">Countries Explored</h2>
-            <div class="text-6xl mb-4">🌎</div>
-            <p class="text-center opacity-70">Vietnam • Peru • Portugal • Morocco</p>
+    <div id="story-form" class="hidden mt-8 bento-card p-8 border border-emerald-100 shadow-xl bg-white">
+        <h2 class="text-3xl mb-6">Log a New Adventure</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" id="story-title" placeholder="Title (e.g., Night Market Eats)" class="p-3 border rounded-lg">
+            <input type="text" id="story-loc" placeholder="Location (e.g., Bangkok)" class="p-3 border rounded-lg">
+            <input type="text" id="story-budget" placeholder="Budget ($, $$, $$$)" class="p-3 border rounded-lg">
+            <button id="save-story" class="md:col-span-2 bg-[#A35638] text-white p-4 rounded-lg font-bold">Save to Diary</button>
         </div>
-
-        <div class="bento-card p-6 border border-orange-100">
-            <h2 class="text-2xl mb-4 text-[#A35638]">Gear Essentials</h2>
-            <ul class="space-y-3" id="packing-list">
-                </ul>
-        </div>
-
-        <div class="md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6" id="blog-feed">
-            </div>
-    </main>
-
-    <script src="script.js"></script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js');
-        }
-    </script>
-</body>
-</html>
+    </div>
+</section>
