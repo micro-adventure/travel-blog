@@ -1,48 +1,34 @@
-// 1. Setup Data Storage
-let myStories = JSON.parse(localStorage.getItem('backpack_stories')) || [];
+const gear = [
+    "45L Main Backpack", "Universal Power Adapter", 
+    "20,000mAh Power Bank", "Microfiber Towel", 
+    "Merino Wool Socks", "Filtered Water Bottle"
+];
 
-const renderStories = () => {
-    const feedEl = document.getElementById('blog-feed');
-    // Clear feed but keep the original ones if you want, or just show all
-    feedEl.innerHTML = ''; 
-    
-    // Combine your manual list with saved ones
-    const allStories = [...myStories]; 
-    
-    allStories.forEach(post => {
-        feedEl.innerHTML += `
-            <div class="bento-card p-6 border shadow-sm bg-white border-emerald-200">
-                <span class="text-xs uppercase font-bold text-[#A35638]">${post.loc}</span>
-                <h3 class="text-xl mt-1 mb-4">${post.title}</h3>
-                <div class="flex justify-between items-center opacity-60 text-sm">
-                    <span>Budget: ${post.budget}</span>
-                    <span class="text-emerald-600">✓ Saved Locally</span>
-                </div>
+const posts = [
+    { title: "Sunrise in Sapa", loc: "Vietnam", budget: "$", gem: "True" },
+    { title: "The Inca Trail", loc: "Peru", budget: "$$$", gem: "Classic" },
+    { title: "Lisbon's Backstreets", loc: "Portugal", budget: "$$", gem: "True" }
+];
+
+// Load Gear
+const listEl = document.getElementById('packing-list');
+gear.forEach(item => {
+    listEl.innerHTML += `<li class="flex items-center gap-2">
+        <input type="checkbox" class="accent-[#A35638]"> <span>${item}</span>
+    </li>`;
+});
+
+// Load Blog
+const feedEl = document.getElementById('blog-feed');
+posts.forEach(post => {
+    feedEl.innerHTML += `
+        <div class="bento-card p-6 border shadow-sm bg-white">
+            <span class="text-xs uppercase font-bold text-[#A35638]">${post.loc}</span>
+            <h3 class="text-xl mt-1 mb-4">${post.title}</h3>
+            <div class="flex justify-between items-center opacity-60 text-sm">
+                <span>Budget: ${post.budget}</span>
+                <span>${post.gem ? '💎 Hidden Gem' : ''}</span>
             </div>
-        `;
-    });
-};
-
-// 2. Handle Form Toggle
-document.getElementById('open-form').addEventListener('click', () => {
-    document.getElementById('story-form').classList.toggle('hidden');
+        </div>
+    `;
 });
-
-// 3. Save New Story
-document.getElementById('save-story').addEventListener('click', () => {
-    const newStory = {
-        title: document.getElementById('story-title').value,
-        loc: document.getElementById('story-loc').value,
-        budget: document.getElementById('story-budget').value
-    };
-
-    myStories.push(newStory);
-    localStorage.setItem('backpack_stories', JSON.stringify(myStories));
-    
-    // Reset and close
-    document.getElementById('story-form').classList.add('hidden');
-    renderStories();
-});
-
-// Initial Render
-renderStories();
