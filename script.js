@@ -1,59 +1,62 @@
 const planningCategories = [
-    { title: "Get Inspired", icon: "💡", color: "bg-orange-100 text-orange-600" },
-    { title: "Save For A Trip", icon: "💰", color: "bg-green-100 text-green-600" },
-    { title: "Plan Your Trip", icon: "🗺️", color: "bg-blue-100 text-blue-600" },
-    { title: "The Right Gear", icon: "🎒", color: "bg-red-100 text-red-600" },
-    { title: "Cheap Airfare", icon: "✈️", color: "bg-purple-100 text-purple-600" },
-    { title: "Accommodation", icon: "🏨", color: "bg-teal-100 text-teal-600" },
-    { title: "Life On The Road", icon: "🚐", color: "bg-yellow-100 text-yellow-600" },
-    { title: "Solo Female Travel", icon: "👩", color: "bg-pink-100 text-pink-600" }
+    { title: "Destinations", image: "https://placehold.co/600x400/1d1d1f/FFF?text=Destinations" },
+    { title: "Itineraries", image: "https://placehold.co/600x400/E63946/FFF?text=Itineraries" },
+    { title: "Travel Gear", image: "https://placehold.co/600x400/2a9d8f/FFF?text=Gear" },
+    { title: "Travel Tips", image: "https://placehold.co/600x400/e9c46a/333?text=Tips" }
 ];
 
 const topArticles = [
-    { title: "How to Find Cheap Flights", category: "Flights" },
-    { title: "How to Find Cheap Accommodation", category: "Accommodation" },
-    { title: "How to Choose a Backpack", category: "Gear" },
-    { title: "16 Steps for Planning a Trip", category: "Planning" },
-    { title: "My Ultimate Packing Guide", category: "Gear" },
-    { title: "How to Buy Travel Insurance", category: "Insurance" },
-    { title: "11 Tips for New Travelers", category: "Tips" },
-    { title: "My Favorite Hostels", category: "Accommodation" },
-    { title: "Solo Female Travel Tips", category: "Solo Travel" }
+    { title: "10 Best Things To Do In Bangkok", category: "Thailand", image: "https://placehold.co/800x600/111/FFF?text=Bangkok", date: "Oct 12, 2023" },
+    { title: "The Ultimate Guide to Solo Travel", category: "Tips", image: "https://placehold.co/800x600/222/FFF?text=Solo+Travel", date: "Sep 28, 2023" },
+    { title: "Backpacking Japan: A 2-Week Itinerary", category: "Japan", image: "https://placehold.co/800x600/333/FFF?text=Japan", date: "Sep 15, 2023" },
+    { title: "How To Pack Light For Winter", category: "Gear", image: "https://placehold.co/800x600/444/FFF?text=Packing", date: "Aug 30, 2023" },
+    { title: "Budget Travel in Europe: A Survival Guide", category: "Europe", image: "https://placehold.co/800x600/555/FFF?text=Europe", date: "Aug 10, 2023" },
+    { title: "Best Street Food in Mexico City", category: "Mexico", image: "https://placehold.co/800x600/666/FFF?text=Tacos", date: "Jul 22, 2023" }
 ];
 
-// Load Planning Categories
+// Load Planning Categories (Curated Collections)
 const planningGrid = document.getElementById('planning-grid');
 if (planningGrid) {
     planningCategories.forEach(item => {
         planningGrid.innerHTML += `
-            <div class="planning-card flex flex-col items-center justify-center p-6 bg-white border border-gray-100 shadow-sm rounded-xl cursor-pointer">
-                <div class="w-16 h-16 rounded-full ${item.color} flex items-center justify-center text-3xl mb-4">
-                    ${item.icon}
+            <a href="#" class="group relative block overflow-hidden rounded-2xl shadow-lg aspect-[4/3] cursor-pointer">
+                <!-- Image -->
+                <img src="${item.image}" alt="${item.title}" class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110">
+                <!-- Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                <!-- Text -->
+                <div class="absolute bottom-0 left-0 p-6">
+                    <h3 class="text-2xl font-bold text-white group-hover:text-red-400 transition-colors">${item.title}</h3>
                 </div>
-                <h3 class="text-lg font-bold text-gray-800 text-center">${item.title}</h3>
-            </div>
+            </a>
         `;
     });
 }
 
-// Load Top Articles
+// Load Top Articles (Latest Adventures)
 const articlesGrid = document.getElementById('top-articles');
 if (articlesGrid) {
     topArticles.forEach(article => {
         articlesGrid.innerHTML += `
-            <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <div class="h-40 bg-gray-200 flex items-center justify-center text-gray-400">
-                    <!-- Placeholder for Article Image -->
-                    <span class="text-4xl">📝</span>
+            <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full group">
+                <!-- Image Container -->
+                <div class="relative h-56 overflow-hidden">
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-red-600 uppercase tracking-wide z-10">
+                        ${article.category}
+                    </div>
+                    <img src="${article.image}" alt="${article.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                 </div>
-                <div class="p-6">
-                    <span class="text-xs font-bold text-green-600 uppercase tracking-wide">${article.category}</span>
-                    <h3 class="text-xl font-bold mt-2 mb-2 text-gray-900 leading-tight hover:text-green-700 cursor-pointer">
+                <!-- Content -->
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-red-600 transition-colors cursor-pointer">
                         ${article.title}
                     </h3>
-                    <a href="#" class="text-sm text-gray-500 hover:text-green-600 font-medium">Read More &rarr;</a>
+                    <div class="mt-auto flex items-center justify-between text-sm text-gray-400 pt-4 border-t border-gray-50">
+                        <span>${article.date}</span>
+                        <span class="flex items-center text-gray-500 font-medium">Read Article <span class="ml-1 transition-transform group-hover:translate-x-1">&rarr;</span></span>
+                    </div>
                 </div>
-            </div>
+            </article>
         `;
     });
 }
