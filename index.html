@@ -3,39 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Backpack Diary</title>
+    <title>Captain Revel's Travel Site</title>
     <link rel="manifest" href="manifest.json">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #F9F7F2; color: #2D4739; }
-        h1, h2 { font-family: 'DM+Serif+Display', serif; }
-        .bento-card { background: white; border-radius: 1.5rem; transition: transform 0.2s; }
-        .bento-card:hover { transform: scale(1.02); }
+        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #333; }
+        h1, h2, h3 { font-family: 'Inter', sans-serif; }
+        .hero-bg { background-color: #2c7a3f; } /* Approximate green */
+        .btn-green { background-color: #eab308; color: black; font-weight: bold; } /* Yellow/Gold buttons often seen on travel sites or contrast */
+        .btn-green:hover { background-color: #ca8a04; }
+
+        /* Custom Grid for Planning Section */
+        .planning-card:hover { transform: translateY(-2px); transition: transform 0.2s; }
     </style>
 </head>
-<body class="p-4 md:p-8">
-    <header class="max-w-6xl mx-auto text-center mb-12">
-        <h1 class="text-5xl md:text-7xl mb-4">The Backpack Diary</h1>
-        <p class="text-lg opacity-80 italic">One bag. Endless borders.</p>
+<body class="font-sans antialiased text-gray-900">
+
+    <!-- Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-bold text-green-700 tracking-tighter">Captain Revel</a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-green-700 font-medium">About</a>
+                    <a href="#" class="text-gray-700 hover:text-green-700 font-medium">Blog</a>
+                    <a href="#" class="text-gray-700 hover:text-green-700 font-medium">Start Here</a>
+                    <a href="#" class="text-gray-700 hover:text-green-700 font-medium">Destinations</a>
+                    <a href="#" class="text-gray-700 hover:text-green-700 font-medium">Booking Resources</a>
+                    <a href="#" class="text-gray-700 hover:text-green-700 font-medium">Books</a>
+                </div>
+                <!-- Mobile Menu Button (simplified) -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-500 hover:text-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <main class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="md:col-span-2 bento-card p-8 bg-emerald-50 border border-emerald-100 min-h-[300px] flex flex-col justify-center items-center">
-            <h2 class="text-2xl mb-4">Countries Explored</h2>
-            <div class="text-6xl mb-4">🌎</div>
-            <p class="text-center opacity-70">Vietnam • Peru • Portugal • Morocco</p>
-        </div>
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Travel smarter, cheaper, longer</h1>
 
-        <div class="bento-card p-6 border border-orange-100">
-            <h2 class="text-2xl mb-4 text-[#A35638]">Gear Essentials</h2>
-            <ul class="space-y-3" id="packing-list">
-                </ul>
-        </div>
-
-        <div class="md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6" id="blog-feed">
+            <!-- Search Bar -->
+            <div class="mt-8 mb-12">
+                <p class="text-xl mb-4 font-light">Where do you want to go?</p>
+                <div class="relative max-w-lg mx-auto">
+                    <input type="text" placeholder="Search destinations..." class="w-full py-3 px-5 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                    <button class="absolute right-2 top-1 bottom-1 bg-yellow-400 text-black px-4 rounded-full font-bold hover:bg-yellow-500">Search</button>
+                </div>
             </div>
+
+            <!-- Email Signup -->
+            <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg mt-8 max-w-2xl mx-auto border border-white/20">
+                <h2 class="text-2xl font-bold mb-2">Get my best tips sent straight to you!</h2>
+                <div class="flex flex-col sm:flex-row gap-3 mt-4">
+                    <input type="text" placeholder="First Name" class="flex-1 py-3 px-4 rounded text-gray-800 focus:outline-none">
+                    <input type="email" placeholder="Email Address" class="flex-1 py-3 px-4 rounded text-gray-800 focus:outline-none">
+                    <button class="bg-yellow-400 text-black font-bold py-3 px-6 rounded hover:bg-yellow-500 uppercase tracking-wide">Send Me Tips</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- Start Planning Section -->
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-center mb-12 relative pb-4 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-16 after:h-1 after:bg-green-600">
+                Start Planning Your Trip
+            </h2>
+            <div id="planning-grid" class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Javascript will populate this -->
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="flex flex-col md:flex-row items-center gap-10 mb-20 bg-gray-50 p-8 rounded-xl">
+            <div class="w-full md:w-1/3">
+                <div class="aspect-square bg-gray-300 rounded-full overflow-hidden shadow-lg border-4 border-white mx-auto max-w-[300px]">
+                <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=JackSparrow&accessories=eyepatch" alt="Captain Revel" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="w-full md:w-2/3 text-center md:text-left">
+                <h2 class="text-3xl font-bold mb-4 text-green-800">Hello! I’m Captain Revel!</h2>
+                <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                    Welcome! Every day I wake up with one goal in mind: “How can I help other people travel better for less?” My mission is to help you realize your travel dreams by making you a smarter, more informed traveler.
+                </p>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Since 2008, I’ve helped tens of millions of people save money, travel more, and have a more authentic experience. Everything I teach you here, I do myself!
+                </p>
+                <a href="#" class="inline-block text-green-700 font-bold hover:underline">Learn more about my story &raquo;</a>
+            </div>
+        </section>
+
+        <!-- Top Articles Section -->
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-center mb-12">Top Articles</h2>
+            <div id="top-articles" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Javascript will populate this -->
+            </div>
+        </section>
+
     </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4 text-gray-400">About Us</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white">About Captain Revel</a></li>
+                        <li><a href="#" class="hover:text-white">Contact Me</a></li>
+                        <li><a href="#" class="hover:text-white">Terms of Use</a></li>
+                        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4 text-gray-400">Travel Tips</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white">Start Here</a></li>
+                        <li><a href="#" class="hover:text-white">Travel Blog</a></li>
+                        <li><a href="#" class="hover:text-white">Destination Guides</a></li>
+                        <li><a href="#" class="hover:text-white">Favorite Hostels</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4 text-gray-400">Book Your Trip</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white">Get Accommodation</a></li>
+                        <li><a href="#" class="hover:text-white">Get Flights</a></li>
+                        <li><a href="#" class="hover:text-white">Get Travel Insurance</a></li>
+                        <li><a href="#" class="hover:text-white">My Favorite Companies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4 text-gray-400">Follow Me</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">Facebook</a>
+                        <a href="#" class="text-gray-400 hover:text-white">Instagram</a>
+                        <a href="#" class="text-gray-400 hover:text-white">Twitter</a>
+                    </div>
+                    <div class="mt-8 text-sm text-gray-500">
+                        &copy; 2024 Captain Revel's Travel Site
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
     <script>
