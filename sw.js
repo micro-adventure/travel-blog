@@ -1,4 +1,4 @@
-const CACHE_NAME = 'backpack-v1';
+const CACHE_NAME = 'voranti-v1';
 const ASSETS = ['./', './index.html', './script.js', './manifest.json'];
 
 self.addEventListener('install', (e) => {
